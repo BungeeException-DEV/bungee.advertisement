@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisement</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: transparent; /* Transparent background */
+        }
+        #adInput {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1e1e1e; /* Dark background for the UI */
+            padding: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 300px;
+            color: #ffffff; /* Text color */
+        }
+        #adInput h3 {
+            margin-top: 0;
+            color: #ffffff; /* White text color */
+        }
+        #adInput input,
+        #adInput textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333; /* Dark background for input fields */
+            color: #fff; /* White text color for input fields */
+            resize: none; /* Prevent resizing of the text area */
+        }
+        #adInput button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        #adInput button:hover {
+            background-color: #0056b3;
+        }
+        #adDisplay {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+        }
+        #emojiContainer {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1e1e1e; /* Dark background for the emoji container */
+            padding: 10px;
+            border: 1px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 300px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .emoji {
+            cursor: pointer;
+            font-size: 1.5em;
+            padding: 5px;
+        }
+        .emoji:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="adInput">
+        <h3>Enter Advertisement Text:</h3>
+        <input type="text" id="companyName" placeholder="Company Name">
+        <textarea id="adText" rows="4" placeholder="Enter your advertisement..."></textarea>
+        <button id="emojiPickerBtn">Emoji Picker</button>
+        <div id="emojiContainer">
+            <span class="emoji">😀</span>
+            <span class="emoji">😁</span>
+            <span class="emoji">😂</span>
+            <span class="emoji">🤣</span>
+            <span class="emoji">😃</span>
+            <span class="emoji">😄</span>
+            <span class="emoji">😅</span>
+            <span class="emoji">😆</span>
+            <span class="emoji">😉</span>
+            <span class="emoji">😊</span>
+            <span class="emoji">😋</span>
+            <span class="emoji">😎</span>
+            <span class="emoji">😍</span>
+            <span class="emoji">😘</span>
+            <span class="emoji">😗</span>
+            <span class="emoji">😙</span>
+            <span class="emoji">😚</span>
+            <span class="emoji">🙂</span>
+            <span class="emoji">🤗</span>
+            <span class="emoji">🤩</span>
+            <span class="emoji">🤔</span>
+            <span class="emoji">🤨</span>
+            <span class="emoji">😐</span>
+            <span class="emoji">😑</span>
+            <span class="emoji">😶</span>
+            <span class="emoji">🙄</span>
+            <span class="emoji">😏</span>
+            <span class="emoji">😣</span>
+            <span class="emoji">😥</span>
+            <span class="emoji">😮</span>
+            <span class="emoji">🤐</span>
+            <span class="emoji">😯</span>
+            <span class="emoji">😪</span>
+            <span class="emoji">😫</span>
+            <span class="emoji">😴</span>
+            <span class="emoji">😌</span>
+            <span class="emoji">😛</span>
+            <span class="emoji">😜</span>
+            <span class="emoji">😝</span>
+            <span class="emoji">🤤</span>
+            <span class="emoji">😒</span>
+            <span class="emoji">😓</span>
+            <span class="emoji">😔</span>
+            <span class="emoji">😕</span>
+            <span class="emoji">🙃</span>
+            <span class="emoji">🤑</span>
+            <span class="emoji">😲</span>
+            <span class="emoji">☹️</span>
+            <span class="emoji">🙁</span>
+            <span class="emoji">😖</span>
+            <span class="emoji">😞</span>
+            <span class="emoji">😟</span>
+            <span class="emoji">😤</span>
+            <span class="emoji">😢</span>
+            <span class="emoji">😭</span>
+            <span class="emoji">😦</span>
+            <span class="emoji">😧</span>
+            <span class="emoji">😨</span>
+            <span class="emoji">😩</span>
+            <span class="emoji">🤯</span>
+            <span class="emoji">😬</span>
+            <span class="emoji">😰</span>
+            <span class="emoji">😱</span>
+            <span class="emoji">🥵</span>
+            <span class="emoji">🥶</span>
+            <span class="emoji">😳</span>
+            <span class="emoji">🤪</span>
+            <span class="emoji">😵</span>
+            <span class="emoji">😡</span>
+            <span class="emoji">😠</span>
+            <span class="emoji">🤬</span>
+            <span class="emoji">😷</span>
+            <span class="emoji">🤒</span>
+            <span class="emoji">🤕</span>
+            <span class="emoji">🤢</span>
+            <span class="emoji">🤮</span>
+            <span class="emoji">🤧</span>
+            <span class="emoji">😇</span>
+            <span class="emoji">🥳</span>
+            <span class="emoji">🥺</span>
+            <span class="emoji">🤠</span>
+            <span class="emoji">🥸</span>
+            <span class="emoji">😎</span>
+            <span class="emoji">🤓</span>
+            <span class="emoji">🧐</span>
+            <span class="emoji">👋</span>
+            <span class="emoji">🤚</span>
+            <span class="emoji">🖐️</span>
+            <span class="emoji">✋</span>
+            <span class="emoji">👌</span>
+            <span class="emoji">✌️</span>
+            <span class="emoji">🤞</span>
+            <span class="emoji">🤟</span>
+            <span class="emoji">🤘</span>
+            <span class="emoji">👈</span>
+            <span class="emoji">👉</span>
+            <span class="emoji">👆</span>
+            <span class="emoji">👇</span>
+            <span class="emoji">👍</span>
+            <span class="emoji">👎</span>
+            <span class="emoji">✊</span>
+            <span class="emoji">👊</span>
+            <span class="emoji">👏</span>
+            <span class="emoji">🙌</span>
+            <span class="emoji">👐</span>
+            <span class="emoji">🤲</span>
+            <span class="emoji">🙏</span>
+            <span class="emoji">✍️</span>
+            <span class="emoji">💪</span>
+            <span class="emoji">🦵</span>
+            <span class="emoji">🦶</span>
+            <span class="emoji">👂</span>
+            <span class="emoji">👃</span>
+            <span class="emoji">🧠</span>
+            <span class="emoji">👀</span>
+            <span class="emoji">👅</span>
+            <span class="emoji">👄</span>
+            <span class="emoji">💋</span>
+            <span class="emoji">💘</span>
+            <span class="emoji">💝</span>
+            <span class="emoji">💖</span>
+            <span class="emoji">💗</span>
+            <span class="emoji">💓</span>
+            <span class="emoji">💞</span>
+            <span class="emoji">💕</span>
+            <span class="emoji">💟</span>
+            <span class="emoji">❣️</span>
+            <span class="emoji">💔</span>
+            <span class="emoji">❤️</span>
+            <span class="emoji">🧡</span>
+            <span class="emoji">💛</span>
+            <span class="emoji">💚</span>
+            <span class="emoji">💙</span>
+            <span class="emoji">💜</span>
+            <span class="emoji">🤎</span>
+            <span class="emoji">🖤</span>
+            <span class="emoji">🤍</span>
+            <!-- Add more emojis here -->
+        </div>
+        <button onclick="submitAd()">Submit</button>
+        <button onclick="closeAdInput()">Close</button>
+    </div>
+    <div id="adDisplay"></div>
+
+    <script>
+        const adText = document.getElementById('adText');
+        const companyName = document.getElementById('companyName');
+        const emojiPickerBtn = document.getElementById('emojiPickerBtn');
+        const emojiContainer = document.getElementById('emojiContainer');
+
+        emojiPickerBtn.addEventListener('click', () => {
+            emojiContainer.style.display = emojiContainer.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('.emoji').forEach(emoji => {
+            emoji.addEventListener('click', () => {
+                adText.value += emoji.textContent;
+                emojiContainer.style.display = 'none';
+            });
+        });
+
+        window.addEventListener('message', function(event) {
+            const data = event.data;
+            if (data.action === "openAdInput") {
+                document.getElementById('adInput').style.display = 'block';
+            } else if (data.action === "displayAd") {
+                const adDisplay = document.getElementById('adDisplay');
+                const company = data.company || "";  // No default value
+                const text = data.text || "No message";  // Default value
+                adDisplay.innerHTML = company ? `${company} - ${text.replace(/\n/g, '<br>')}` : text.replace(/\n/g, '<br>');
+                adDisplay.style.display = 'block';
+                setTimeout(function() {
+                    adDisplay.style.display = 'none';
+                }, data.displayTime);
+            }
+        });
+
+        function submitAd() {
+            const adTextValue = adText.value.trim();
+            const companyNameValue = companyName.value.trim();
+            fetch(`https://${GetParentResourceName()}/submitAd`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({ text: adTextValue, company: companyNameValue })
+            }).then(resp => resp.json()).then(resp => {
+                if (resp === 'ok') {
+                    document.getElementById('adInput').style.display = 'none';
+                }
+            });
+        }
+
+        function closeAdInput() {
+            document.getElementById('adInput').style.display = 'none';
+            fetch(`https://${GetParentResourceName()}/closeAdInput`, {
+                method: 'POST'
+            });
+        }
+    </script>
+</body>
+</html>
