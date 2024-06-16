@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'BungeeException'
-description 'Mad.V Advertisement Script'
+description 'Bungee Advertisement Script'
 version '1.0'
 
 client_scripts {
