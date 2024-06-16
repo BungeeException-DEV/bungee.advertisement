@@ -1,4 +1,4 @@
-# madv.advertisement
+# bungee.advertisement
 
 ### 📢 Advertisement Script - Boost Your Server's Engagement! 📢
 
