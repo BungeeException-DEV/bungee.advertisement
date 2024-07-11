@@ -31,7 +31,7 @@ RegisterNUICallback('submitAd', function(data, cb)
     companyName = data.company
     adText = data.text
     local completeAdText = companyName .. " - " .. adText
-    TriggerServerEvent('madv.ads:server:sendAd', completeAdText)
+    TriggerServerEvent('bungee.ads:server:sendAd', completeAdText)
     SetNuiFocus(false, false)
     cb('ok')
 end)
@@ -41,8 +41,8 @@ RegisterNUICallback('closeAdInput', function(data, cb)
     cb('ok')
 end)
 
-RegisterNetEvent('madv.ads:client:displayAd')
-AddEventHandler('madv.ads:client:displayAd', function(adText)
+RegisterNetEvent('bungee.ads:client:displayAd')
+AddEventHandler('bungee.ads:client:displayAd', function(adText)
     SendNUIMessage({
         action = "displayAd",
         text = adText,
